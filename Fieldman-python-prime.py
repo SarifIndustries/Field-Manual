@@ -20,6 +20,19 @@ print(str1 * 2) # | TextText
 
 
 #=========================================
+#== SCRIPT SCAFFOLD
+#!/usr/bin/env python3
+import sys
+
+def main():
+    for arg in sys.argv[1:]:
+        print arg
+
+if __name__ == "__main__":
+    main()
+
+
+#=========================================
 #== STRING FORMAT (pyth 3.6)
 name = "Bob"
 f_string = f"Hello, {name}"
@@ -35,6 +48,15 @@ print(f"{square_meters:.2f}")
 #== UTIL
 id(x)       # memory related id
 a = None    # Null
+
+
+#=========================================
+#== DISCOVERY
+sp = []
+# On any object:
+dir(sp)         # available methods
+help(sp)        # doc help
+help(sp.copy)   # works on methods
 
 
 #=========================================
@@ -70,13 +92,17 @@ while x > 10:
     break
     continue
 
+while (user_input := input(menu_text)) != "3": # Walrus operator (pyth 3.8)
+        pass
+
 for x in [1, 2, 3]:
     print(x, end=", ")
 
 
 #=========================================
 #== TUPLE
-t = (1, "Text", 2) # Can omit brackets
+t = (1, "Text", 2)  # Can omit brackets
+t_one = (1,)        # One element tuple
 
 
 #=========================================
