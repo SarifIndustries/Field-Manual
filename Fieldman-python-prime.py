@@ -1,6 +1,6 @@
-        ######################################
-        #######  PYTHON FIELD MANUAL #########
-        ######################################
+######################################
+#######  PYTHON FIELD MANUAL #########
+######################################
 
 # Only what needed
 # Python: easy quickscript, optimistic, step-by-step execution
@@ -15,8 +15,12 @@ print("Result:", p * x) # | Result: 4.5
 
 str1 = "Text"
 str2 = 'Text' # same as double-quotes
+str3 = \
+"On next line"
 
 print(str1 * 2) # | TextText
+
+10 ** (-27)
 
 
 #=========================================
@@ -30,7 +34,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+# Set indentation to 4 spaces.
 
 #=========================================
 #== STRING FORMAT (pyth 3.6)
@@ -160,6 +164,7 @@ person = ("Bob", 20, "Janitor")
 name, _, profession = person
 head, *tail = person # Collect tail to list
 *head, tail = person
+first, second, third, *rest = [1, 2, 3, 4, 5]
 
 
 #=========================================
