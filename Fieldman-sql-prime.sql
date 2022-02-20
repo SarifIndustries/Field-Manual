@@ -5,7 +5,10 @@
 -- Usefull stuff:
 -- https://www.sqlite.org/about.html
 -- https://dbfiddle.uk/
--- DBBrowser for SQLite
+
+-- DBBrowser for SQLite .db files
+-- ElephantSQL, PostgreSQL in the cloud
+-- HeidiSQL database interactor
 
 -- This is a comment
 -- Every query must end with semicolon `;`
@@ -14,7 +17,7 @@ CREATE TABLE IF NOT EXISTS books (title TEXT, author TEXT);
 
 -- Single quotes vs Double quotes:
 -- [S]ingle quotes are for [S]trings Literals (date literals are also strings)
--- [D]ouble quotes are for [D]atabase Identifiers
+-- [D]ouble quotes are for [D]atabase Identifiers (table names)
 
 -- https://www.sqlite.org/lang_insert.html
 INSERT INTO agents (name, special_number) VALUES ('Smith', 8000), ('John', 7000);
@@ -23,7 +26,7 @@ INSERT INTO agents (name, special_number) VALUES ('Smith', 8000), ('John', 7000)
 SELECT name, special_number FROM agents;
 SELECT * FROM books;
 
-SELECT DISTINCT name, special_number
+SELECT DISTINCT name, special_number AS some_number
 FROM agents
 WHERE (special_number  = 1000 OR special_number >= 2000) AND name != 'Smith'
 ORDER BY special_number DESC
@@ -59,11 +62,13 @@ CREATE TABLE accounts (
 );
 
 -- Join
-SELECT users.*, id
+SELECT users.*, id AS new_name
 FROM users
 JOIN accounts -- inner join
-ON users.id = accounts.holeder_id
-WHERE users.last_name = 'Anderson';
+ON users.id = accounts.holder_id
+WHERE users.last_name = 'Anderson'
+ORDER BY users.id
+LIMIT 15;
 
 -- Index tree
 -- Balanced B-tree, used for fast search of rows
@@ -72,10 +77,15 @@ WHERE users.last_name = 'Anderson';
 -- Also uses additional storage space (is a table)
 CREATE INDEX IF NOT EXISTS idx_books_author ON books(author)
 -- will speed up author-related queries
+-- created automatically on primary key
 
 
 -- Virtual table. Create temporary table (Joins) for future usage.
 -- Window Over-function. Used for calculating new generated values for selects
 --  also can use previous/next rows
 --  similar to QlikView ROW_NUMBER As number.
+
+-- POSTGRE SQL differences.
+-- %s instead of ? for attributes, when programming
+-- id SERIAL PRIMARY KEY -- uses hidden SEQUENCE table for obtaining numbers
 

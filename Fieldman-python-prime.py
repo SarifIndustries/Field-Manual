@@ -176,6 +176,10 @@ a = 10
 def g():
     a = a + 10 # Name shadowing. Creates local variable
 
+def s():
+    global a # Use global scope
+    a = 10
+
 def add(x, y=8): # Parameters, Default value
     pass
     return x + y
@@ -314,7 +318,7 @@ class Mage(Hero):
 
 
 #=========================================
-#== COMPOSItION
+#== COMPOSITION
 class BookShelf:
     def __init__(self, *books):
         self.books = books
@@ -519,6 +523,23 @@ class Student:
         self.name = name
         self.grades = grades or []  # New list created if one isn't passed
 
+
+#=========================================
+#== VIRTUAL ENVIRONMENTS
+# We use a module named virtualenv which is a tool to create isolated Python environments.
+# virtualenv creates a folder which contains all the necessary executables to use the packages
+# that a Python project would need.
+# site-package = library
+
+#=========================================
+#== DOTENV
+# Environment variables for project.
+import os
+import dotenv
+
+dotenv.load_dotenv()
+
+PALISADE_URL = os.environ["PALISADE_URL"]
 
 
 
